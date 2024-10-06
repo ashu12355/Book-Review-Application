@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Reviews for Book</h1>
+    <a th:href="@{/books/{bookId}/reviews/create(bookId=${bookId})}" class="button">Add Review</a>
+    <ul>
+        <tr th:each="review : ${reviews}">
+            <li>
+                <strong th:text="${review.user.username}"></strong>: 
+                <span th:text="${review.context}"></span> 
+                <span> - </span>
+                <span th:text="${review.rating}"></span>
+                <a th:href="@{/books/{bookId}/reviews/edit/{reviewId}(bookId=${bookId}, reviewId=${review.id})}" class="button">Edit</a>
+                <a th:href="@{/books/{bookId}/reviews/delete/{reviewId}(bookId=${bookId}, reviewId=${review.id})}" class="button danger">Delete</a>
+            </li>
+        </tr>
+    </ul>
+</body>
+</html>

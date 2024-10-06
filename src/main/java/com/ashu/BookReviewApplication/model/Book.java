@@ -8,8 +8,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "books")
 public class Book {
 
     @Id
@@ -18,6 +20,7 @@ public class Book {
 
     private String title;
     private String author;
+    private String description;
 
     @OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
     private List<Review> reviews;
@@ -53,6 +56,15 @@ public class Book {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
 
     
 }

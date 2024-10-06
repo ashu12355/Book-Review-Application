@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Book List</h1>
+    <a href="/books/create" class="button">Add New Book</a>
+    <ul>
+        <th>Title</th><th>Author</th>
+        <th>Action</th>
+        <br>
+        <hr>
+        <ul>
+        <table>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td>
+                <a th:href="@{/books/edit/{id}(id=${book.id})}" class="button">Edit</a>
+                <a th:href="@{/books/delete/{id}(id=${book.id})}" class="button danger">Delete</a>
+            </td>
+        </tr>
+        </table>
+    </ul>
+    </ul>
+</body>
+</html>
